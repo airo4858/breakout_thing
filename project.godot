@@ -21,6 +21,7 @@ Bricks=""
 Paddle=""
 GameOver=""
 SlowDown=""
+Double=""
 
 [input]
 
