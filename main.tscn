@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://dvyct6yuyiu8p"]
+[gd_scene load_steps=17 format=3 uid="uid://dvyct6yuyiu8p"]
 
 [ext_resource type="Script" path="res://Actors/ball.gd" id="1_ry14i"]
 [ext_resource type="Script" path="res://Actors/paddle.gd" id="2_tw752"]
 [ext_resource type="PackedScene" uid="uid://de4bl8dbp3gsj" path="res://brick.tscn" id="3_2o2dh"]
 [ext_resource type="PackedScene" uid="uid://bupbo20glxrs3" path="res://slowdown.tscn" id="4_7lqpc"]
 [ext_resource type="PackedScene" uid="uid://dpixkmwdmyxmt" path="res://double.tscn" id="5_k71h4"]
+[ext_resource type="PackedScene" uid="uid://bal5v8287yewl" path="res://duplicate.tscn" id="6_52h80"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_pdu7n"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_j4dnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bxdh"]
 size = Vector2(21, 16)
@@ -37,7 +38,7 @@ size = Vector2(1073, 45)
 modulate = Color(0, 0, 0, 1)
 position = Vector2(577.5, 330.875)
 scale = Vector2(1177, 668.25)
-texture = SubResource("CanvasTexture_pdu7n")
+texture = SubResource("CanvasTexture_j4dnd")
 
 [node name="Ball" type="CharacterBody2D" parent="." node_paths=PackedStringArray("score_label", "StartText")]
 position = Vector2(323, 375)
@@ -81,7 +82,7 @@ scale = Vector2(1148.75, 23.5)
 texture = SubResource("CanvasTexture_q8is6")
 
 [node name="Wall" type="CharacterBody2D" parent="."]
-position = Vector2(7, 26)
+position = Vector2(0, 25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 position = Vector2(9.5, 305.5)
@@ -107,17 +108,14 @@ texture = SubResource("CanvasTexture_wcsox")
 [node name="Brick2" parent="." instance=ExtResource("3_2o2dh")]
 position = Vector2(152, 176)
 
+[node name="Brick36" parent="." instance=ExtResource("3_2o2dh")]
+position = Vector2(151, 279)
+
 [node name="Brick3" parent="." instance=ExtResource("3_2o2dh")]
 position = Vector2(152, 228)
 
-[node name="Brick" parent="Brick3" instance=ExtResource("3_2o2dh")]
-position = Vector2(-1, 51)
-
 [node name="Brick4" parent="." instance=ExtResource("3_2o2dh")]
 position = Vector2(152, 334)
-
-[node name="Brick5" parent="." instance=ExtResource("3_2o2dh")]
-position = Vector2(211, 203)
 
 [node name="Brick6" parent="." instance=ExtResource("3_2o2dh")]
 position = Vector2(273, 202)
@@ -146,9 +144,6 @@ position = Vector2(479, 335)
 [node name="Brick14" parent="." instance=ExtResource("3_2o2dh")]
 position = Vector2(480, 284)
 
-[node name="Brick18" parent="." instance=ExtResource("3_2o2dh")]
-position = Vector2(696, 133)
-
 [node name="Brick19" parent="." instance=ExtResource("3_2o2dh")]
 position = Vector2(698, 189)
 
@@ -173,12 +168,6 @@ position = Vector2(888, 329)
 [node name="Brick26" parent="." instance=ExtResource("3_2o2dh")]
 position = Vector2(928, 282)
 
-[node name="Brick27" parent="." instance=ExtResource("3_2o2dh")]
-position = Vector2(823, 235)
-
-[node name="Brick28" parent="." instance=ExtResource("3_2o2dh")]
-position = Vector2(888, 232)
-
 [node name="Brick29" parent="." instance=ExtResource("3_2o2dh")]
 position = Vector2(1027, 332)
 
@@ -190,9 +179,6 @@ position = Vector2(1029, 224)
 
 [node name="Brick32" parent="." instance=ExtResource("3_2o2dh")]
 position = Vector2(1026, 179)
-
-[node name="Brick33" parent="." instance=ExtResource("3_2o2dh")]
-position = Vector2(1025, 131)
 
 [node name="Score" type="RichTextLabel" parent="."]
 offset_left = 51.0
@@ -221,14 +207,29 @@ position = Vector2(147, 66)
 [node name="Brick16" parent="." instance=ExtResource("4_7lqpc")]
 position = Vector2(334, 71)
 
+[node name="Brick28" parent="." instance=ExtResource("5_k71h4")]
+position = Vector2(487, 110)
+
 [node name="Brick17" parent="." instance=ExtResource("4_7lqpc")]
 position = Vector2(481, 222)
-
-[node name="Brick" parent="Brick17" instance=ExtResource("5_k71h4")]
-position = Vector2(3, -107)
 
 [node name="Brick34" parent="." instance=ExtResource("4_7lqpc")]
 position = Vector2(693, 77)
 
 [node name="Brick35" parent="." instance=ExtResource("4_7lqpc")]
 position = Vector2(1025, 82)
+
+[node name="Brick15" parent="." instance=ExtResource("5_k71h4")]
+position = Vector2(823, 234)
+
+[node name="Brick27" parent="." instance=ExtResource("5_k71h4")]
+position = Vector2(890, 234)
+
+[node name="Brick5" parent="." instance=ExtResource("6_52h80")]
+position = Vector2(213, 203)
+
+[node name="Brick18" parent="." instance=ExtResource("6_52h80")]
+position = Vector2(692, 134)
+
+[node name="Brick33" parent="." instance=ExtResource("6_52h80")]
+position = Vector2(1026, 134)

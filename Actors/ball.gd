@@ -8,9 +8,20 @@ var forward = Vector2(1,1).normalized()
 const paddle_width: float = 100.0
 var current_score: int = 0
 var is_running: bool = false
+var multi_ball: int = 1
 
 #func _ready() -> void:
 	#velocity = Vector2(1,1).normalized()
+func dupli(position: Vector2) -> void:
+	var newBall: Node = duplicate()
+	multi_ball = multi_ball + 1
+	if newBall:
+		newBall.position = position + Vector2(40,0)
+		newBall.visible = true;
+		newBall.is_running = true;
+		newBall.speed = 5
+		if get_parent():
+			get_parent().add_child(newBall)
 
 func _physics_process(delta: float) -> void:
 	if (not is_running):
@@ -39,10 +50,18 @@ func _physics_process(delta: float) -> void:
 			forward = Vector2.from_angle(bounce_angle)
 			
 		if (collision.get_collider().is_in_group("GameOver")):
-			StartText.visible = true
-			StartText.text = "GAME OVER"
-			is_running = false
+			if (multi_ball == 1):
+				StartText.visible = true
+				StartText.text = "GAME OVER"
+				is_running = false
+			multi_ball = multi_ball - 1
 			
 		if (collision.get_collider().is_in_group("SlowDown")):
 			speed = speed / 2
 			current_score += 10
+		
+		if (collision.get_collider().is_in_group("Double")):
+			speed = speed * 2
+			
+		if (collision.get_collider().is_in_group("Duplicate")):
+			dupli(position)
